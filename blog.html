@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Online Reading Hub</title>
+  <style>
+    body {margin:0;font-family:Arial,sans-serif;background:#f9f9f9;color:#333;transition:background 0.3s,color 0.3s;}
+    body.dark {background:#121212;color:#eee;}
+    header {background:#4a90e2;color:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;}
+    header h1 {margin:0;font-size:24px;}
+    nav ul {list-style:none;display:flex;gap:20px;margin:0;padding:0;align-items:center;}
+    nav a {color:#fff;text-decoration:none;font-weight:bold;}
+    nav button {background:#ffcc00;border:none;padding:6px 12px;cursor:pointer;border-radius:5px;font-weight:bold;}
+    .avatar {display:flex;align-items:center;gap:10px;}
+    .avatar img {width:30px;height:30px;border-radius:50%;}
+    .section {padding:40px 20px;text-align:center;}
+    .blogs {display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+    .blog-card {background:#fff;border:1px solid #ddd;border-radius:5px;padding:20px;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:transform 0.3s, box-shadow 0.3s;text-align:left;}
+    .blog-card:hover {transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    body.dark .blog-card {background:#1e1e1e;border-color:#444;}
+    .blog-card h3 {margin-top:0;}
+    .blog-card p {font-size:14px;color:#555;}
+    .blog-card a {display:inline-block;margin-top:10px;color:#4a90e2;font-weight:bold;text-decoration:none;}
+    footer {background:#333;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    .social-icons {margin-top:10px;display:flex;justify-content:center;gap:15px;}
+    .social-icons a {color:#fff;font-size:20px;text-decoration:none;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Reading Hub</h1>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="authLinks">
+          <a href="register.html"><button>Register</button></a>
+          <a href="login.html"><button>Login</button></a>
+        </li>
+      </ul>
+    </nav>
+    <button class="toggle-btn" onclick="toggleDark()">Toggle Dark Mode</button>
+  </header>
+
+  <section class="section">
+    <h2>Latest Blog Posts</h2>
+    <div class="blogs">
+      <div class="blog-card">
+        <h3>Why Reading Improves Your Mind</h3>
+        <p>Discover how daily reading habits can sharpen memory, boost creativity, and reduce stress...</p>
+        <a href="login.html" id="blog1">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Top 10 Classic Novels</h3>
+        <p>From Pride and Prejudice to War and Peace, explore timeless classics that shaped literature...</p>
+        <a href="login.html" id="blog2">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Building a Reading Community</h3>
+        <p>Learn how book clubs and online forums can connect readers worldwide and spark discussions...</p>
+        <a href="login.html" id="blog3">Read More</a>
+      </div>
+      <div class="blog-card">
+        <h3>Digital vs Print Books</h3>
+        <p>Are eBooks replacing traditional print? We weigh the pros and cons of both formats...</p>
+        <a href="login.html" id="blog4">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Online Reading Hub | Follow us on social media</p>
+    <div class="social-icons">
+      <a href="#">📷 Instagram</a>
+      <a href="#">📘 Facebook</a>
+      <a href="#">🐦 Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDark(){document.body.classList.toggle('dark');}
+
+    // Detect saved login and update nav + blog links
+    window.onload=function(){
+      const savedUser=localStorage.getItem("savedUser");
+      if(savedUser){
+        // Update nav
+        document.getElementById("authLinks").innerHTML=`
+          <div class="avatar">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar">
+            <a href="#">${savedUser}'s Account</a>
+          </div>
+        `;
+        // Update blog links
+        document.getElementById("blog1").setAttribute("href","#");
+        document.getElementById("blog1").innerText="Click to read full post";
+        document.getElementById("blog2").setAttribute("href","#");
+        document.getElementById("blog2").innerText="Click to read full post";
+        document.getElementById("blog3").setAttribute("href","#");
+        document.getElementById("blog3").innerText="Click to read full post";
+        document.getElementById("blog4").setAttribute("href","#");
+        document.getElementById("blog4").innerText="Click to read full post";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community - Online Reading Hub</title>
+  <style>
+    body {margin:0;font-family:Arial,sans-serif;background:#f9f9f9;color:#333;transition:background 0.3s,color 0.3s;}
+    body.dark {background:#121212;color:#eee;}
+    header {background:#4a90e2;color:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;}
+    header h1 {margin:0;font-size:24px;}
+    nav ul {list-style:none;display:flex;gap:20px;margin:0;padding:0;align-items:center;}
+    nav a {color:#fff;text-decoration:none;font-weight:bold;}
+    nav button {background:#ffcc00;border:none;padding:6px 12px;cursor:pointer;border-radius:5px;font-weight:bold;}
+    .avatar {display:flex;align-items:center;gap:10px;}
+    .avatar img {width:30px;height:30px;border-radius:50%;}
+    .section {padding:40px 20px;text-align:center;}
+    .community {display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+    .card {background:#fff;border:1px solid #ddd;border-radius:5px;padding:20px;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:transform 0.3s, box-shadow 0.3s;text-align:left;}
+    .card:hover {transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    body.dark .card {background:#1e1e1e;border-color:#444;}
+    .card h3 {margin-top:0;}
+    .card p {font-size:14px;color:#555;}
+    .card a {display:inline-block;margin-top:10px;color:#4a90e2;font-weight:bold;text-decoration:none;}
+    footer {background:#333;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    .social-icons {margin-top:10px;display:flex;justify-content:center;gap:15px;}
+    .social-icons a {color:#fff;font-size:20px;text-decoration:none;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Reading Hub</h1>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="authLinks">
+          <a href="register.html"><button>Register</button></a>
+          <a href="login.html"><button>Login</button></a>
+        </li>
+      </ul>
+    </nav>
+    <button class="toggle-btn" onclick="toggleDark()">Toggle Dark Mode</button>
+  </header>
+
+  <section class="section">
+    <h2>Community Discussions</h2>
+    <div class="community">
+      <div class="card">
+        <h3>Favorite Classic Novels</h3>
+        <p>Share your thoughts on timeless classics like Pride and Prejudice, War and Peace, and more...</p>
+        <a href="login.html" id="comm1">Join Discussion</a>
+      </div>
+      <div class="card">
+        <h3>Modern Reading Trends</h3>
+        <p>Are eBooks taking over? Discuss the rise of digital reading and its impact on libraries...</p>
+        <a href="login.html" id="comm2">Join Discussion</a>
+      </div>
+      <div class="card">
+        <h3>Book Club Ideas</h3>
+        <p>Looking to start a book club? Share tips, schedules, and favorite picks with fellow readers...</p>
+        <a href="login.html" id="comm3">Join Discussion</a>
+      </div>
+      <div class="card">
+        <h3>Writing & Publishing</h3>
+        <p>Are you an aspiring author? Connect with others to discuss writing, editing, and publishing...</p>
+        <a href="login.html" id="comm4">Join Discussion</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Online Reading Hub | Follow us on social media</p>
+    <div class="social-icons">
+      <a href="#">📷 Instagram</a>
+      <a href="#">📘 Facebook</a>
+      <a href="#">🐦 Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDark(){document.body.classList.toggle('dark');}
+
+    // Detect saved login and update nav + community links
+    window.onload=function(){
+      const savedUser=localStorage.getItem("savedUser");
+      if(savedUser){
+        // Update nav
+        document.getElementById("authLinks").innerHTML=`
+          <div class="avatar">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar">
+            <a href="#">${savedUser}'s Account</a>
+          </div>
+        `;
+        // Update community links
+        document.getElementById("comm1").setAttribute("href","#");
+        document.getElementById("comm1").innerText="Click to join discussion";
+        document.getElementById("comm2").setAttribute("href","#");
+        document.getElementById("comm2").innerText="Click to join discussion";
+        document.getElementById("comm3").setAttribute("href","#");
+        document.getElementById("comm3").innerText="Click to join discussion";
+        document.getElementById("comm4").setAttribute("href","#");
+        document.getElementById("comm4").innerText="Click to join discussion";
+      }
+    }
+  </script>
+</body>
+</html>
